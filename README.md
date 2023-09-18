@@ -1,1 +1,119 @@
 # franka-emika-guide
+
+
+User guide for the Franka Emika robots at TU Delft
+
+For more info: https://frankaemika.github.io/docs/installation_linux.html
+
+# Guide to getting started with the Franka Emika Robots's 
+
+This guide is to help people get up and running with the Franka Emika Panda's for the first time and as a reference for people already familiar with using the Panda's in the lab. 
+
+For someone using the Panda for the first time, the guide should be read sequentially. 
+
+## libfranka
+
+`libfranka` is the software package on the PC connected directly to the Panda controller that supports the communication interface necessary to send torque commands and receive information such as position, velocity, mass matrix etc.
+
+This package should already be installed on the PC's in the lab that are used to run the controllers. **It is not necessary to install this on your own PC**, unless you are running the Panda in the Gazebo environment.  
+
+### Installing libfranka libraray
+
+**On the computers in the lab, this step should be skipped.** The computers should have `libfranka` installed. Don't reinstall it or upgrade/downgrade it, as other students code might rely on this version. 
+
+If you do need to install the `libfranka` library, there is a guide from `Franka Emika`, which is summarised below for convenience. If this guide doesn't work, consult the official guide at, https://frankaemika.github.io/docs/installation_linux.html , as these instructions might become outdated.
+
+- Open a terminal by pressing `ctrl`+`alt`+`t`
+
+- In case you already have some versions of `libfranka` installed, remove them to avoid conflicts with:
+``` bash
+sudo apt remove "*libfranka*"
+sudo apt autoremove
+```
+For the `Panda`:
+Type the following commands to generate and build libfranka
+
+For the `Panda`:
+``` bash
+cd
+sudo apt install build-essential cmake git libpoco-dev libeigen3-dev
+git clone --recursive https://github.com/frankaemika/libfranka
+cd libfranka
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+cmake --build .
+```
+For the `fr3`:
+``` bash
+cd
+sudo apt install build-essential cmake git libpoco-dev libeigen3-dev
+git clone --recursive https://github.com/frankaemika/libfranka --branch 0.10.0 # only for FR3
+cd libfrankaecursive https://github.com/frankaemika/libfranka
+cd libfranka
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+cmake --build .
+```
+
+This last command may take several minutes to compile the code. 
+
+## Setting up the `franka_humun_friendly_controllers`
+
+`franka_ros` is a ROS support package supplied by Franka Emika (https://frankaemika.github.io/docs/franka_ros.html). It contains supporting materials such as CAD files, urdf's and templates for controllers. The human `franka_human_friendly_controllers` package adds more functionality on top of what is given in the base `franka_ros` package, especially features to help researchers that use impedance based control and need human friendly interactions. 
+
+On the controller Desktop computer in the lab, set up a catkin workspace for yourself at `~/Documents/your_name_ws/`, .e.g. `~/Documents/giovanni_ws/`. 
+
+`cd` to your workspace, download and install the `franka_ros` package
+
+``` bash
+cd ~/Documents/your_name_ws/
+mkdir src
+cd src
+git clone --recursive https://github.com/frankaemika/franka_ros 
+```
+Then install the `franka_human_friendly_controllers` within the `franka_ros` folders
+
+``` bash
+cd src/franka_ros
+git clone https://github.com/franzesegiovanni/franka_human_friendly_controllers.git
+```
+
+Then build the packages, sourcing the compatable version of `libranka`, depending the robot model, `panda`, or `fr3`:
+### Panda version 
+```bash
+catkin_make -DMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=~/libfranka_panda/build
+```
+### fr3 robot version 
+```bash
+catkin_make -DMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=~/libfranka_fr3/build
+```
+
+## Running the controllers on the Robot
+- Switch on the power switch of the controller
+- On the PC, set the ethernet too "connect to panda", i.e. manually set the IP address to 172.16.0.1 
+- In a web browser (.e.g.firefox), type in the IP address of the robot you are using, a `Franka Emika` browser application screen should appear
+	- **Tip**: If the browser application is not found, try using the ping command from the command line e.g. `ping 172.16.0.2`. There are multiple Panda's in the lab with multiple IP address, this can be quick way to check which on is connected (we probably should write the ip address on each robot!) 
+	- **Tip:** Check that both emergency power switches are not engaged (The `fr3`'s only have one, the `Panda` has an extra emergency between stop between the controller and the power socket. 
+- In the browser application, unlock the robot joints. 
+- In the menu (three bars at the right top corner), activate the `fci`
+- In the terminal, source the ROS packages you built
+`source ~/Documents/your_name_ws/devel/setup.bash`
+- Then, to you run the controller on the robot run:
+``` bash
+roslaunch franka_human_friendly_controllers <controller_name>.launch robot_ip:=<ROBOT_IP> load_gripper:=True
+```
+for example, the Cartesian impedance controller with the robot that has an IP address of 172.16.0.2:
+``` bash
+roslaunch franka_human_friendly_controllers cartesian_variable_impedance_controller.launch robot_ip:=172.16.0.2 load_gripper:=True
+```
+- If you need to use the gripper, in a different terminal, run (don't forget to source again):
+```bash
+rosrun franka_human_friendly_controllers franka_gripper_online
+```
+
+## Bimanual Setup
+
+## Connecting to the Robot with your own computer
+
