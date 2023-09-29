@@ -113,7 +113,53 @@ roslaunch franka_human_friendly_controllers cartesian_variable_impedance_control
 rosrun franka_human_friendly_controllers franka_gripper_online
 ```
 
-## Bimanual Setup
 
 ## Connecting to the Robot with your own computer
 
+## Running the robot in Gazebo
+
+## Bimanual Setup
+
+## Learning Resources
+
+Some resources to get up to speed with the prequisites for using the Franka Emika robots and ROS in general. A lot of these are hijacked from https://www.ipb.uni-bonn.de/onboarding/. Also, these haven't been tested, so if you do use one of these, please let us know if it was useful or not, or if know of other good resources you have actually used, so we can curate the list over time. 
+
+### ROS
+
+Lecture series:
+https://www.youtube.com/playlist?list=PLE-BQwvVGf8HOvwXPgtDfWoxd4Cc6ghiP
+
+Official ROS tutorials:
+https://wiki.ros.org/ROS/Tutorials
+
+### Linux/Ubuntu
+
+Recommendations are very welcome for this!!
+
+### Git
+
+A beginners guide:
+https://rogerdudler.github.io/git-guide/
+
+More advanced course:
+https://missing.csail.mit.edu/2020/version-control/
+
+Interactive tutorial:
+https://learngitbranching.js.org/
+
+Another fundamentals tutorial:
+https://www.youtube.com/watch?v=HVsySz-h9r4
+
+A very hand guide for when you're in trouble:
+https://ohshitgit.com/
+
+### Python
+
+Python Intro from Bonn University:
+https://www.youtube.com/playlist?list=PLgnQpQtFTOGRKTPxhXZ68kKAQtsy76s0S
+
+### C++
+
+Two courses from Bonn University:
+https://www.youtube.com/playlist?list=PLgnQpQtFTOGR50iIOtO36nK6aNPtVq98C
+https://www.ipb.uni-bonn.de/cpp-course-2020/
