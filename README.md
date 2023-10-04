@@ -120,6 +120,15 @@ rosrun franka_human_friendly_controllers franka_gripper_online
 ## Connecting to the Robot with your own computer
 
 ## Running the robot in Gazebo
+This section is copied from https://github.com/franzesegiovanni/franka_human_friendly_controllers/, if there is any problems with using the instructions below to use Gazebo, please check there for a more up to date version and let us know of the problem. 
+
+The first time you run it, set up Gazebo with python3 setup_gazebo.py (in the 'franka_human_friendly_controllers' package).
+
+To lunch the cartesian impedance controller in simulation:
+
+roslaunch franka_gazebo panda.launch x:=-0.5 world:=$(rospack find franka_gazebo)/world/stone.sdf controller:=cartesian_variable_impedance_controller rviz:=true
+
+To kill gazebo run: killall -9 gazebo & killall -9 gzserver  & killall -9 gzclient
 
 ## Bimanual Setup
 
