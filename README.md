@@ -5,6 +5,9 @@ User guide for the Franka Emika robots at TU Delft
 
 For more info: https://frankaemika.github.io/docs/installation_linux.html
 
+
+![Alt text](./Smithy.jpeg?raw=true "Smithy")
+
 # Guide to getting started with the Franka Emika Robots's 
 
 This guide is to help people get up and running with the Franka Emika Panda's for the first time and as a reference for people already familiar with using the Panda's in the lab. 
