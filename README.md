@@ -126,7 +126,9 @@ The first time you run it, set up Gazebo with python3 setup_gazebo.py (in the 'f
 
 To lunch the cartesian impedance controller in simulation:
 
+```bash
 roslaunch franka_gazebo panda.launch x:=-0.5 world:=$(rospack find franka_gazebo)/world/stone.sdf controller:=cartesian_variable_impedance_controller rviz:=true
+```
 
 To kill gazebo run: killall -9 gazebo & killall -9 gzserver  & killall -9 gzclient
 
