@@ -88,9 +88,19 @@ Then build the packages, sourcing the compatable version of `libranka`, dependin
 ```bash
 catkin_make -DMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=~/libfranka_panda/build
 ```
+or 
+
+```bash
+catkin build -DMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=~/libfranka_panda/build
+```
 ### fr3 robot version 
 ```bash
 catkin_make -DMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=~/libfranka_fr3/build
+```
+or 
+
+```bash
+catkin build -DMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=~/libfranka_fr3/build
 ```
 
 ## Running the controllers on the Robot
