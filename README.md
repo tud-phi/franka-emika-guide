@@ -129,6 +129,48 @@ rosrun franka_human_friendly_controllers franka_gripper_online
 
 ## Connecting to the Robot with your own computer
 
+1. Connect your PC/laptop to the network that ROS_MASTER is running on .i.e. connect your PC/laptop to the network switch with the ethernet cable
+2. Create a new wired network and in IPv4 set Manual and put a new ip for your computer, in Ubuntu settings
+<PC/laptop>=A.B.C.F where F is different from the IP address of the computer connected to the robot controller, <controller_computer_ip> (which is ussually 172.16.0.1 in the lab) or the <robot_ip> (which is in the range of 172.16.0.2 - 172.16.0.5, for the four Franka Emika robots we have in the lab). Netmask is the same  ```255.255.255.0```. 
+Save the network. 
+
+![Alt text](./wired_network_settings.png?raw=true "Wired_Settings")
+
+3. Add this to your bash file (```gedit ~/.bashrc```): 
+```bash
+export ROS_MASTER_URI=http://<controller_computer_ip>:11311
+export ROS_IP=<PC/laptop>
+export ROS_HOSTNAME=<PC/laptop>
+```
+
+For example
+
+```bash
+export ROS_MASTER_URI=http://172.16.0.1:11311
+export ROS_IP=172.16.0.25
+export ROS_HOSTNAME=172.16.0.25
+```
+
+**Note** to switch the `ROS_MASTER_URI` back to the default settings, add the line 
+
+```bash
+export ROS_MASTER_URI=http://localhost:11311
+``` 
+
+to the `~/.bashrc` file and comment out the previous export lines. Then re `source` the `~/.bashrc` file
+
+4. source the `~/.bashrc` file
+
+```bash
+source ~/.bashrc
+```
+
+5. source ros
+source ```/opt/ros/<ros_version>/setup.bash```
+
+6. Test the data_streaming with 
+```rostopic list``` 
+
 ## Running the robot in Gazebo
 This section is copied from https://github.com/franzesegiovanni/franka_human_friendly_controllers/, if there is any problems with using the instructions below to use Gazebo, please check there for a more up to date version and let us know of the problem. 
 
