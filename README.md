@@ -51,7 +51,7 @@ For the `fr3`:
 ``` bash
 cd
 sudo apt install build-essential cmake git libpoco-dev libeigen3-dev
-git clone --recursive https://github.com/frankaemika/libfranka --branch 0.10.0 # only for FR3
+git clone --recursive https://github.com/frankaemika/libfranka --branch 0.13.3 # only for FR3
 cd libfrankaecursive https://github.com/frankaemika/libfranka
 cd libfranka
 mkdir build
@@ -60,7 +60,7 @@ cmake -DCMAKE_BUILD_TYPE=Release ..
 cmake --build .
 ```
 
-This last command may take several minutes to compile the code. 
+This last command may take several minutes to compile the code. Also, the version (in this case 0.13.3) is constantly getting updated by Franka Emika. So check there install instructions (warning, these don't get updated frequently enough and can be behind what is needed) and github for the most up to date instructions and versions of libfranka.
 
 ## Setting up the `franka_humun_friendly_controllers`
 
