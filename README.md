@@ -60,7 +60,6 @@ For the `fr3`:
 cd
 sudo apt install build-essential cmake git libpoco-dev libeigen3-dev
 git clone --recursive https://github.com/frankaemika/libfranka --branch 0.13.3 # only for FR3
-cd libfrankaecursive https://github.com/frankaemika/libfranka
 cd libfranka
 mkdir build
 cd build
