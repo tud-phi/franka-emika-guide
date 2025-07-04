@@ -3,7 +3,7 @@
 
 User guide for the Franka Emika robots at TU Delft
 
-For more info: https://frankaemika.github.io/docs/installation_linux.html
+For more info: https://frankarobotics.github.io/docs/installation_linux.html
 
 ## Booking sheet
 
@@ -32,7 +32,7 @@ This package should already be installed on the PC's in the lab that are used to
 
 **On the computers in the lab, this step should be skipped.** The computers should have `libfranka` installed. Don't reinstall it or upgrade/downgrade it, as other students code might rely on this version. 
 
-If you do need to install the `libfranka` library, there is a guide from `Franka Emika`, which is summarised below for convenience. If this guide doesn't work, consult the official guide at, https://frankaemika.github.io/docs/installation_linux.html , as these instructions might become outdated.
+If you do need to install the `libfranka` library, there is a guide from `Franka Emika`, which is summarised below for convenience. If this guide doesn't work, consult the official guide at, https://frankarobotics.github.io/docs/installation_linux.html , as these instructions might become outdated.
 
 - Open a terminal by pressing `ctrl`+`alt`+`t`
 
@@ -72,7 +72,7 @@ This last command may take several minutes to compile the code. Also, the versio
 
 ## Setting up the `franka_humun_friendly_controllers`
 
-`franka_ros` is a ROS support package supplied by Franka Emika (https://frankaemika.github.io/docs/franka_ros.html). It contains supporting materials such as CAD files, urdf's and templates for controllers. The human `franka_human_friendly_controllers` package adds more functionality on top of what is given in the base `franka_ros` package, especially features to help researchers that use impedance based control and need human friendly interactions. 
+`franka_ros` is a ROS support package supplied by Franka Emika (https://frankarobotics.github.io/docs/franka_ros.html). It contains supporting materials such as CAD files, urdf's and templates for controllers. The human `franka_human_friendly_controllers` package adds more functionality on top of what is given in the base `franka_ros` package, especially features to help researchers that use impedance based control and need human friendly interactions. 
 
 On the controller Desktop computer in the lab, set up a catkin workspace for yourself at `~/Documents/your_name_ws/`, .e.g. `~/Documents/giovanni_ws/`. 
 
