@@ -1,0 +1,16 @@
+## Ignore LaTeX intermediate files (keep only .tex and .pdf)
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.nav
+*.snm
+*.vrb
+*.lof
+*.lot
+*.bbl
+*.blg
+
