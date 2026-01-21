@@ -7,12 +7,7 @@ For more info: https://frankaemika.github.io/docs/installation_linux.html
 
 ## Booking sheet
 
-Use the following link to a google sheets to book the robots in the lab, it is in the "Pandas" tab: 
-
-https://docs.google.com/spreadsheets/d/1oqVysljFe-cgENf9eQPAWF-jr9f36gb8-cH2WGER9Rw/edit?gid=323673917#gid=323673917
-
-**Note:** This might change to another booking system, keep an eye on this page for the current system being used to book the robots 
-
+**Warning** The old google sheet is not used for booking the robots anymore, use the QR codes in the lab. If you are an MSc student, please talk to your daily supervisor before using the robots and booking them.
 
 ![Alt text](./Smithy.jpeg?raw=true "Smithy")
 
