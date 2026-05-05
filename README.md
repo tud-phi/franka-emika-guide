@@ -65,7 +65,7 @@ cmake --build .
 
 This last command may take several minutes to compile the code. Also, the version (in this case 0.13.3) is constantly getting updated by Franka Emika. So check there install instructions (warning, these don't get updated frequently enough and can be behind what is needed) and github for the most up to date instructions and versions of libfranka.
 
-## Setting up the `franka_humun_friendly_controllers`
+## Setting up the `franka_human_friendly_controllers`
 
 `franka_ros` is a ROS support package supplied by Franka Emika (https://frankaemika.github.io/docs/franka_ros.html). It contains supporting materials such as CAD files, urdf's and templates for controllers. The human `franka_human_friendly_controllers` package adds more functionality on top of what is given in the base `franka_ros` package, especially features to help researchers that use impedance based control and need human friendly interactions. 
 
@@ -188,6 +188,19 @@ roslaunch franka_gazebo panda.launch x:=-0.5 world:=$(rospack find franka_gazebo
 To kill gazebo run: killall -9 gazebo & killall -9 gzserver  & killall -9 gzclient
 
 ## Bimanual Setup
+You can make use of https://github.com/franzesegiovanni/franka_bimanual_controllers. After cloning it in your workspace, building, and sourcing, you should be able to run:
+
+```
+roslaunch franka_bimanual_controllers dual_arm_cartesian_impedance_example_controller.launch robot_right_ip:=<ip_robot_right> robot_left_ip:=<ip_robot_left> arm_id:=<arm_id>
+```
+
+where <ip_robot_right> and <ip_robot_left> are the ip of the right and left robot respectively. The arm_id is the id of the robot that you have in the bimanual setup, i.e. panda or fr3. This code does not support hybrid panda-fr3 setup. 
+The arm_id is important to change the joint repulsion behaviour.
+
+Some configuration (like the coordinates of the robots) may change from the original config in the `xacro`. Adjust this calibrated to how the robots are positioned in your setup.
+
+### Note on using Franka Emika Research
+Currently, the bimanual setup uses two Panda Franka Emika Research (FER), that are only officially supported in ROS1 Noetic and Ubuntu 20.04. It is likely that your computer does not use this exact version. To solve this, you can create your own Docker image that sets up your own workspace in your own computer, where you can run your algorithms/methods. As a reference, you can take a look to https://github.com/ivrolan/franka-fer-lab, that provides example Dockerfiles and `docker-compose.yml` to run on your laptop your own workspace and with some setup for using learned models from your projects in your ROS nodes.   
 
 ## Learning Resources
 
